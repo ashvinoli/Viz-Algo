@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="./css/styling.css" type="text/css"  />
+    <link rel="stylesheet" href="./B4/css/bootstrap.min.css" type="text/css" />
+    <title>Sorting!</title>
+  </head>
+  <body>
+    <div class="my_main_heading">
+      <h6>Select Sorting Algorithm: <span>    </span>
+	<input type="radio" name="algorithm" value="bubble_sort" />Bubble sort <span>   </span>
+	<input type="radio" name="algorithm" value="insertion_sort"/>Insertion Sort <br/>
+      </h6>
+      <hr/>
+      <h6>  Input your numbers:<input id="input_numbers" class = "input_class" type="text"/></h6>
+      <hr/>
+      <h6>
+	<button type="button" id="start" class="btn btn-dark">Lets Sort The Numbers!</button>
+	<span style="float:right;margin-right:50px">To increase animation speed click the left button multiple times!</span>
+
+      </h4>
+    </div>
+    
+    <canvas id="myCanvas" class="canvas_draw">
+      Your browser does not support the canvas element.
+    </canvas>
+    <script type="text/javascript" src="./B4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="./scripts/vector.js"></script>
+    <script type="text/javascript" src="./scripts/sorting_algorithm_swap_generators.js"></script>
+    <script type="text/javascript" src="./scripts/box.js"></script>
+    <script type="text/javascript" src="./scripts/boxes.js"></script>
+    <script type="text/javascript" src="./scripts/hires_canvas.js"></script>
+    <script type="text/javascript" src="./scripts/script.js"></script>
+  </body>
+</html>
