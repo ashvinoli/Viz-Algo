@@ -28,19 +28,20 @@ class boxes{
 	let swappable = false;
 	let swap_allowed = this.check_if_new_swap_allowed();
 	if (swap_allowed == true && (this.current_swap_index < this.swap_array.length)){
-	    let swap_vector = this.swap_array[this.current_swap_index];
+	    let swap_array = this.swap_array[this.current_swap_index];
+	    for (var i = 0; i < swap_array.length; i++) {
+		let first = swap_array[i].x;
+		let second = swap_array[i].y;
+		let first_center = this.boxes[first].center;
+		let second_center = this.boxes[second].center;
+		this.boxes[first].center = swap(second_center,this.boxes[second].center = first_center);
+		let generated_path = gen_path(first_center,second_center);
+		let reverse_path = rev_path(generated_path);
+		this.boxes[first].path = generated_path;
+		this.boxes[second].path = reverse_path;
+		this.boxes[second] = swap(this.boxes[first],this.boxes[first]=this.boxes[second]);
+	    }
 	    this.current_swap_index+=1;
-	    let first = swap_vector.x;
-	    let second = swap_vector.y;
-	    let first_center = this.boxes[first].center;
-	    let second_center = this.boxes[second].center;
-	    let generated_path = gen_path(first_center,second_center);
-	    let reverse_path = rev_path(generated_path);
-	    this.boxes[first].path = generated_path;
-	    this.boxes[second].path = reverse_path;
-	    let temp_vector = this.boxes[first];
-	    this.boxes[first] = this.boxes[second];
-	    this.boxes[second] = temp_vector;
 	    swappable = true
 	}
 	return swappable;

@@ -37,3 +37,7 @@ function gen_path(vector_first,vector_second) {
 function rev_path(path){
     return path.slice().reverse();
 }
+
+function swap(x) {
+    return x;
+}

@@ -21,6 +21,9 @@ function run_program() {
 	    }else if (all_radio_buttons[i].value == "insertion_sort") {
 		algorithm = generate_insertion_swap_orders;
 		break;
+	    }else if (all_radio_buttons[i].value == "quick_sort") {
+		algorithm = generate_quick_swap_orders;
+		break;
 	    }
 	}
     }
