@@ -61,14 +61,14 @@ function quick_sort(input,offset=0) {
 		    use_array[j] = use_array[use_array.length-i-1];
 		    use_array[use_array.length-i-1] = num;
 		    let temp_vector = new vector(j+offset,use_array.length-i-1+offset);
-		    //console.log(temp_vector,input);
+		    console.log(temp_vector,input);
 		    swap_orders_temp.push(temp_vector);
 		    for (var k = j; k < use_array.length-i-1-1; k++) {
 			let num = use_array[k];
 			use_array[k] = use_array[k+1];
 			use_array[k+1] = num;
 			let temp_vector = new vector(k+offset,k+1+offset);
-			//console.log(temp_vector,input);
+			console.log(temp_vector,input);
 			swap_orders_temp.push(temp_vector);
 		    }
 		    break;
@@ -76,7 +76,8 @@ function quick_sort(input,offset=0) {
 	    }
 	    swap_orders.push(swap_orders_temp);
 	}
-	return quick_sort(before_arr,0).concat(pivot,quick_sort(after_arr,offset));
+	let new_offset = offset+input.length - total_greater;
+	return quick_sort(before_arr,offset).concat(pivot,quick_sort(after_arr,new_offset));
     }
 }
 let swap_orders = [];
