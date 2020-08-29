@@ -86,3 +86,58 @@ function generate_quick_swap_orders(input){
     quick_sort(input);
     return swap_orders;
 }
+
+
+
+function merge_sort(input) {
+    if(input.length == 1){
+	return input;
+    }
+    if (input.length==2) {
+	if (input[0]>input[1]) {
+	    input[0] = swap(input[1],input[1]=input[0]);
+	}
+	return input;
+	
+    }
+  
+    let split_point = Math.floor(input.length/2);
+    let L_arr = input.slice(0,split_point);
+    let R_arr = input.slice(split_point);
+    
+    let Sorted_L = merge_sort(L_arr);
+    let Sorted_R  = merge_sort(R_arr);
+    
+    let Merged = merge_them(Sorted_L,Sorted_R);
+    return Merged;
+}
+
+function merge_them(L,R) {
+    let L_len = L.length;
+    let R_len = R.length;
+    let merged=[];
+    let i,j,k;
+    i = j = k = 0;
+    while (i<L_len && j<R_len){
+	if (L[i]< R[j]) {
+	    merged[k] = L[i];
+	    i++;
+	    k++;
+	}else{
+	    merged[k] = R[j];
+	    j++;
+	    k++;
+	}   
+    }
+    while (i<L_len){
+	merged[k] = L[i];
+	i++;
+	k++;
+    }
+    while (j<R_len){
+	merged[k] = R[j];
+	j++;
+	k++;
+    }
+    return merged;
+}
