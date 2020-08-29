@@ -17,7 +17,7 @@ function generate_bubble_swap_orders(input,offset=0) {
 }
 
 
-function generate_insertion_swap_orders(input) {
+function generate_insertion_swap_orders(input,offset=0) {
     let use_array = input.slice();
     let swap_orders = [];
     for (var i = 0; i < use_array.length; i++) {
@@ -26,7 +26,7 @@ function generate_insertion_swap_orders(input) {
 	    use_array[start] = swap(use_array[start-1],use_array[start-1] = use_array[start])
 	    let location_first = start-1;
 	    let location_second = start;
-	    let temp_vector = [new vector(location_first,location_second)];
+	    let temp_vector = [new vector(location_first+offset,location_second+offset)];
 	    swap_orders.push(temp_vector);
 	    start-=1;
 	}
@@ -149,10 +149,12 @@ function merge_them(L,R,swap_orders,L_offset = 0,R_offset = 0) {
 	j++;
 	k++;
     }
-    let generated_swaps =(generate_bubble_swap_orders(my_L,L_offset));
+    let generated_swaps =(generate_insertion_swap_orders(my_L,L_offset));
+    let flattened = [];
     for (var o = 0; o < generated_swaps.length; o++) {
-	swap_orders.push(generated_swaps[o]);
+	flattened.push(generated_swaps[o][0]);
     }
+    swap_orders.push(flattened);
     return merged;
 }
 
